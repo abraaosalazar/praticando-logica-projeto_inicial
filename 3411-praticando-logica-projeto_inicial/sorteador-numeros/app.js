@@ -31,21 +31,31 @@ function sortear(){
         numerosSorteados.push(numeroGerado);
     }
     console.log(numerosSorteados);
+    alterarStatusBotao();
 
     exibirTextoNaTela('subtitulo_resultado', `Numeros sorteados: ${numerosSorteados}`)
 }
 
 function limparCampos(){
-    let quantidadeNumeros = document.getElementById('quantidade');
-    quantidadeNumeros.value = '';
-    let numeroInicial = document.getElementById('de');
-    numeroInicial.value = '';
-    let numeroFinal = document.getElementById('ate');
-    numeroFinal.value = '';
+    document.getElementById('quantidade').value = '';
+    document.getElementById('de').value = '';
+    document.getElementById('ate').value = '';
 }
 
-function reiniciar(){
+function reiniciar() {
     numerosSorteados = [];
     limparCampos();
     exibirTextoNaTela('subtitulo_resultado', `Numeros sorteados: nenhum até agora`);
+    alterarStatusBotao();
+}
+
+function alterarStatusBotao(){
+    let botao = document.getElementById('btn-reiniciar');
+    if(botao.classList.contains('container__botao-desabilitado')){
+        botao.classList.remove('container__botao-desabilitado');
+        botao.classList.add('container__botao');
+    } else {
+        botao.classList.remove('container__botao');
+        botao.classList.add('container__botao-desabilitado');
+    }
 }
