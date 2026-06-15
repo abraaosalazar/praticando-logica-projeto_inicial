@@ -20,6 +20,16 @@ function sortear(){
     let quantidadeNumeros = parseInt(document.getElementById('quantidade').value);
     let numeroInicial = parseInt(document.getElementById('de').value);
     let numeroFinal = parseInt(document.getElementById('ate').value);
+
+    if(numeroInicial >= numeroFinal){
+        alert(`O campo do numero deve ser maior que o campo qté o numero.`);
+        return;
+    }
+
+    if(quantidadeNumeros > (numeroFinal - numeroInicial + 1) ){
+        alert(`o intervalo de quantidade está errado`);
+        return;
+    }
     
     for(let i = 1; i <= quantidadeNumeros; i++){
         let numeroGerado = gerarNumeros(numeroInicial, numeroFinal);
