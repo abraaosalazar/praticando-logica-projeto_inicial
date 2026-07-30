@@ -1,6 +1,7 @@
 let participantes = [];
 let participante = document.getElementById('nome-amigo');
 let lista = document.getElementById('lista-amigos');
+let sorteio = document.getElementById('lista-sorteio');
 
 function adicionar(){
     if(participante.value != ''){
@@ -21,9 +22,13 @@ function adicionar(){
 
 function sortear(){
     embaralha(participantes);
-    let sorteio = document.getElementById('lista-sorteio');
+    
     for (let index = 0; index < participantes.length; index++) {
-        sorteio.innerHTML = sorteio.innerHTML + participantes[index] + '-->' + participantes[index + 1] + '<br>';
+       if (index == participantes.length - 1){
+         sorteio.innerHTML = sorteio.innerHTML + participantes[index] + '-->' + participantes[0] + '<br>';
+       } else{
+         sorteio.innerHTML = sorteio.innerHTML + participantes[index] + '-->' + participantes[index + 1] + '<br>';
+       }
     }
 }
 
@@ -43,6 +48,7 @@ function embaralha(lista) {
 
 function reiniciar(){
     participantes = [];
-    lista.textContent = '';
+    sorteio.innerHTML = ''
+    lista.innerHTML = ''
 }
 
