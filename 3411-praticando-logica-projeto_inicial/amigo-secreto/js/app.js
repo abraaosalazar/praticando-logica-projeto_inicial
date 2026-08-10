@@ -4,6 +4,11 @@ let lista = document.getElementById('lista-amigos');
 let sorteio = document.getElementById('lista-sorteio');
 
 function adicionar(){
+    if(participantes.includes(participante.value)){
+        alert('Participante já adicionado');
+        return;
+    }
+
     if(participante.value != ''){
         participantes.push(participante.value);
 
@@ -16,11 +21,17 @@ function adicionar(){
         participante.value = '';
 
     } else{
+        alert('O campo de nome não pode estar em branco');
         return
     }
 }
 
 function sortear(){
+    if(participantes.length < 4){
+        alert('Insira pelo menos 4 participantes');
+        return;
+    }
+
     embaralha(participantes);
     
     for (let index = 0; index < participantes.length; index++) {
